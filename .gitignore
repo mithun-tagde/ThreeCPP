@@ -1,0 +1,60 @@
+# Build directories
+build/
+out/
+bin/
+lib/
+
+# Generated files
+API_REFERENCE.md
+API_REFERENCE.html
+
+# Documentation generation tool (internal only)
+tools/doc_generator/
+
+# IDE
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# CMake
+CMakeUserPresets.json
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Debug
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Dependencies
+glfw/
+glm/
+glad/
+spirv-cross/
+
+# Build outputs
+.cmake/
+CPackConfig.cmake
+CPackSourceConfig.cmake

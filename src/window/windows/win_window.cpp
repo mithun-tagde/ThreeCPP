@@ -1,0 +1,1 @@
+// Windows window implementation stub
