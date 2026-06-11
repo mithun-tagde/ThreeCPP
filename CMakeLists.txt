@@ -86,8 +86,9 @@ if(THREECPP_GRAPHICS_OPENGL)
         )
         FetchContent_MakeAvailable(glfw)
     endif()
-    
+
     # GLAD for OpenGL loading
+    set(THREECPP_GLAD_TARGET)
     find_package(glad CONFIG QUIET)
     if(NOT glad_FOUND)
         message(STATUS "GLAD not found, using FetchContent...")
@@ -96,6 +97,15 @@ if(THREECPP_GRAPHICS_OPENGL)
             URL https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.zip
         )
         FetchContent_MakeAvailable(glad)
+        add_subdirectory(${glad_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BINARY_DIR}/glad_cmake)
+        glad_add_library(glad_gl_core_33 STATIC
+            LOADER
+            API gl:core=3.3
+            LOCATION "${CMAKE_CURRENT_BINARY_DIR}/glad_generated"
+        )
+        set(THREECPP_GLAD_TARGET glad_gl_core_33)
+    else()
+        set(THREECPP_GLAD_TARGET glad::glad)
     endif()
 endif()
 
@@ -116,15 +126,15 @@ add_subdirectory(src/graphics)
 add_subdirectory(src/renderer)
 
 # Optional features
-if(THREECPP_FEATURES_ANIMATION)
+if(THREECPP_FEATURES_ANIMATION AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/features/animation/CMakeLists.txt")
     add_subdirectory(src/features/animation)
 endif()
 
-if(THREECPP_FEATURES_PARTICLES)
+if(THREECPP_FEATURES_PARTICLES AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/features/particles/CMakeLists.txt")
     add_subdirectory(src/features/particles)
 endif()
 
-if(THREECPP_FEATURES_POSTPROCESSING)
+if(THREECPP_FEATURES_POSTPROCESSING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/features/postprocessing/CMakeLists.txt")
     add_subdirectory(src/features/postprocessing)
 endif()
 
@@ -138,7 +148,12 @@ target_include_directories(ThreeCPP PUBLIC
 target_link_libraries(ThreeCPP PUBLIC glm)
 
 if(THREECPP_GRAPHICS_OPENGL)
-    target_link_libraries(ThreeCPP PUBLIC glfw glad)
+    target_link_libraries(ThreeCPP PUBLIC glfw ${THREECPP_GLAD_TARGET})
+    if(NOT glad_FOUND)
+        target_include_directories(ThreeCPP PUBLIC
+            "${CMAKE_CURRENT_BINARY_DIR}/glad_generated/include"
+        )
+    endif()
 endif()
 
 # ============= Documentation Generation (Internal Tool) =============

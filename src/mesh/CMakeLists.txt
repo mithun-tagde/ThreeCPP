@@ -5,7 +5,7 @@ target_sources(ThreeCPP PRIVATE
 target_sources(ThreeCPP PUBLIC
     FILE_SET mesh_headers
     TYPE HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/..
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../include
     FILES
-        ../threecpp/mesh.h
+        ../../include/threecpp/mesh.h
 )

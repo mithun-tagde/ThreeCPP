@@ -20,14 +20,14 @@ target_sources(ThreeCPP PRIVATE
 target_sources(ThreeCPP PUBLIC
     FILE_SET public_headers
     TYPE HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/..
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../include
     FILES
-        ../threecpp/vector2.h
-        ../threecpp/vector3.h
-        ../threecpp/vector4.h
-        ../threecpp/matrix4.h
-        ../threecpp/quaternion.h
-        ../threecpp/euler.h
-        ../threecpp/color.h
-        ../threecpp/object3d.h
+        ../../include/threecpp/vector2.h
+        ../../include/threecpp/vector3.h
+        ../../include/threecpp/vector4.h
+        ../../include/threecpp/matrix4.h
+        ../../include/threecpp/quaternion.h
+        ../../include/threecpp/euler.h
+        ../../include/threecpp/color.h
+        ../../include/threecpp/object3d.h
 )

@@ -5,9 +5,9 @@ target_sources(ThreeCPP PRIVATE
 target_sources(ThreeCPP PUBLIC
     FILE_SET material_headers
     TYPE HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/..
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../include
     FILES
-        ../threecpp/material.h
-        ../threecpp/mesh_basic_material.h
-        ../threecpp/mesh_phong_material.h
+        ../../include/threecpp/material.h
+        ../../include/threecpp/mesh_basic_material.h
+        ../../include/threecpp/mesh_phong_material.h
 )

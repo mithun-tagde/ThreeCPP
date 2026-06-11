@@ -5,9 +5,9 @@ target_sources(ThreeCPP PRIVATE
 target_sources(ThreeCPP PUBLIC
     FILE_SET geometry_headers
     TYPE HEADERS
-    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/..
+    BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../../include
     FILES
-        ../threecpp/geometry.h
-        ../threecpp/buffer_geometry.h
-        ../threecpp/box_geometry.h
+        ../../include/threecpp/geometry.h
+        ../../include/threecpp/buffer_geometry.h
+        ../../include/threecpp/box_geometry.h
 )
